@@ -1,0 +1,60 @@
+* {
+    --spacing-base: 1.75rem;
+    --spacing-sm: 0.5rem;
+    --primary-color: rgb(200, 218, 204);
+    --secondary-color: rgb(199, 249, 210);
+}
+
+body {
+    background: rgb(29, 29, 29);
+    color: var(--primary-color);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+    padding: var(--spacing-base);
+    margin: var(--spacing-base);
+    line-height: var(--spacing-base);
+    max-width: 550px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-base);
+}
+
+a:link, a:visited {
+    color: var(--secondary-color);
+    text-decoration: underline wavy;
+    text-underline-offset: var(--spacing-sm);
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+}
+
+section.quote {
+    font-size: 0.85rem;
+    max-width: 400px;
+    margin-top: var(--spacing-base);
+}
+
+q {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1rem;
+}
+
+ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-base);
+}
+
+.node-list li {
+    display: flex;
+    flex-direction: flex-start;
+    gap: var(--spacing-sm);
+    align-items: center;
+}
+
+.node-list img {
+    width: 20px;
+}
