@@ -2,28 +2,28 @@
     --spacing-base: 1.75rem;
     --spacing-lg: 2rem;
     --spacing-sm: 0.5rem;
-    --primary-color: rgb(200, 218, 204);
-    --secondary-color: rgb(199, 249, 210);
+    --primary-color: rgb(255, 255, 255);
+    --secondary-color: rgb(124, 252, 151);
+    --background-color: rgb(15, 15, 15);
+    --muted-color: rgba(255,255,255,0.5);
 }
 
 body {
-    background: rgb(29, 29, 29);
+    background: var(--background-color);
     color: var(--primary-color);
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 16px;
     padding: var(--spacing-base);
-    margin: var(--spacing-base);
+    margin: var(--spacing-base) auto;
     line-height: var(--spacing-lg);
     max-width: 550px;
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-base);
 }
 
 a:link, a:visited {
     color: var(--secondary-color);
     text-decoration: underline wavy;
     text-underline-offset: var(--spacing-sm);
+    text-decoration-thickness: 1px;
 }
 
 section {
@@ -37,6 +37,11 @@ section.quote {
     margin-top: var(--spacing-base);
 }
 
+
+section.quote p {
+    color: var(--muted-color);
+}
+
 q {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 1rem;
@@ -46,16 +51,53 @@ ul {
     list-style-type: none;
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-base);
+    gap: var(--spacing-sm);
+    padding-inline-start: 0px;
 }
 
 .node-list li {
     display: flex;
-    flex-direction: flex-start;
-    gap: var(--spacing-sm);
-    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
 }
 
-.node-list img {
-    width: 20px;
+.node-list > li > div.ip {
+    font-family: monospace;
+    font-size: 0.75rem;
+    margin-bottom: -0.25rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--spacing-sm);
+    color: #666;
+}
+
+.node-list > li > div.ip > img {
+    height: 10px;
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    height: auto;
+    gap: var(--spacing-base);
+    margin-bottom: var(--spacing-base);
+    user-select: none;
+}
+
+.logo-container img {
+    height: 38px;
+    overflow: hidden;
+    border-radius: var(--spacing-sm);
+    border: 1px solid rgb(41, 39, 39);
+}
+
+.logo-container pre {
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--muted-color);
 }
