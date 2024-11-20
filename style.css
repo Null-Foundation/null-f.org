@@ -24,6 +24,7 @@ body {
 @media (max-width: 600px) {
     body {
         max-width: 100%;
+        padding-bottom: calc(2 * var(--spacing-lg));
     }
 
     * {
@@ -36,7 +37,7 @@ a:visited {
     color: var(--secondary-color);
     text-decoration: underline wavy;
     text-underline-offset: var(--spacing-sm);
-    text-decoration-thickness: 1px;
+    text-decoration-thickness: 0.3px;
 }
 
 section {
@@ -45,19 +46,20 @@ section {
 }
 
 section.quote {
-    font-size: 0.85rem;
-    max-width: 400px;
     margin-top: var(--spacing-base);
 }
 
 
 section.quote p {
     color: var(--muted-color);
+    font-size: 0.85rem;
 }
 
 q {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 1.12rem;
+    font-size: 1.32rem;
+    max-width: 75%;
+    text-wrap: pretty;
 }
 
 ul {
@@ -100,7 +102,6 @@ ul {
     height: auto;
     gap: var(--spacing-base);
     margin-bottom: var(--spacing-base);
-    user-select: none;
 }
 
 .logo-container img {
