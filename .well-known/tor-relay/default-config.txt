@@ -5,6 +5,8 @@ RunAsDaemon 1
 CookieAuthentication 1
 ControlPort 9051
 ORPort 9001
+ExitRelay 1
+# IPv6Exit 1
 ExitPolicy accept *:20-21
 ExitPolicy accept *:43
 ExitPolicy accept *:53
