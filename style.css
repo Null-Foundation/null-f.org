@@ -1,11 +1,13 @@
 * {
     --spacing-base: 1.75rem;
     --spacing-lg: 2rem;
+    --spacing-md: 1rem;
     --spacing-sm: 0.5rem;
-    --primary-color: rgb(255, 255, 255);
+    --primary-color: rgb(238, 252, 240);
     --secondary-color: rgb(124, 252, 151);
     --background-color: rgb(15, 15, 15);
     --muted-color: rgba(255,255,255,0.5);
+    --node-list-ip-display: flex;
 }
 
 body {
@@ -17,6 +19,18 @@ body {
     margin: var(--spacing-base) auto;
     line-height: var(--spacing-lg);
     max-width: 550px;
+    text-wrap: pretty;
+}
+
+@media (max-width: 600px) {
+    body {
+        max-width: 100%;
+        padding: var(--spacing-md)
+    }
+
+    * {
+        --node-list-ip-display: none;
+    }
 }
 
 a:link, a:visited {
@@ -44,7 +58,7 @@ section.quote p {
 
 q {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 1rem;
+    font-size: 1.12rem;
 }
 
 ul {
@@ -71,6 +85,7 @@ ul {
     align-items: center;
     gap: var(--spacing-sm);
     color: var(--muted-color);
+    display: var(--node-list-ip-display);
 }
 
 .node-list > li > div.ip > img {
