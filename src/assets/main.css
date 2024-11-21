@@ -1,0 +1,38 @@
+* {
+    --spacing-base: 1.75rem;
+    --spacing-lg: 2rem;
+    --spacing-sm: 0.5rem;
+    --primary-color: rgb(238, 252, 240);
+    --secondary-color: rgb(124, 252, 151);
+    --background-color: rgb(15, 15, 15);
+    --muted-color: rgba(255, 255, 255, 0.5);
+    --extra-muted-color: rgba(255, 255, 255, 0.15);
+    --warning-color: rgb(252, 82, 82);
+}
+
+body {
+    background: var(--background-color);
+    color: var(--primary-color);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+    padding: var(--spacing-base);
+    margin: var(--spacing-base) auto;
+    line-height: var(--spacing-lg);
+    max-width: 550px;
+    text-wrap: pretty;
+}
+
+a:link,
+a:visited {
+    color: var(--secondary-color);
+    text-decoration: underline wavy;
+    text-underline-offset: var(--spacing-sm);
+    text-decoration-thickness: 0.3px;
+}
+
+@media (max-width: 650px) {
+    body {
+        max-width: 100%;
+        padding-bottom: calc(2 * var(--spacing-lg));
+    }
+}

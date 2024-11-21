@@ -1,2 +1,3 @@
 .vite/
 .vite/deps/
+node_modules/
