@@ -92,6 +92,32 @@ ul {
     height: 10px;
 }
 
+p.multi-instance-message {
+    color: var(--muted-color);
+    font-size: 0.75rem;
+    line-height: 1.2rem;
+}
+
+cite {
+    font-size: 0.75em;
+    color: var(--muted-color);
+}
+
+li.loading {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: var(--spacing-base);
+    align-items: center;
+    color: var(--muted-color);
+}
+
+li.loading .spinner {
+    width: 24px;
+    height: 24px;
+    opacity: 0.5;
+}
+
 .logo-container {
     display: flex;
     flex-direction: row;

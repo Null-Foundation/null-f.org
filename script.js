@@ -2,36 +2,63 @@
 // i wrote this in a rush
 // don't judge me
 
-document.addEventListener("DOMContentLoaded", async () => {
-  const rsaFingerprint = await fetch("/.well-known/tor-relay/rsa-fingerprint.txt").then((response) => response.text());
-  const relayIds = rsaFingerprint.split("\n").filter(line => line);
-  const response = await fetch("https://onionoo.torproject.org/details?lookup=" + relayIds.join(","));
-  const data = await response.json();
+const rsaFingerprintUrl = "/.well-known/tor-relay/rsa-fingerprint.txt";
+const onionooLookupUrlPrefix = "https://onionoo.torproject.org/details?lookup=";
 
-  document.querySelector(".node-list").innerHTML = '';
+function formatOrAddress(orAddress) {
+  if (!orAddress) {
+    return null;
+  }
+
+  if (orAddress.includes("]:")) {
+    return `${orAddress.split("]:")[0]}]`;
+  }
+
+  return orAddress.split(":")[0];
+}
+
+async function fetchData() {
+  const rsaFingerprint = await fetch(rsaFingerprintUrl).then((response) => response.text());
+  const relayIds = rsaFingerprint.split("\n").filter(line => line);
+  return await (await fetch(`${onionooLookupUrlPrefix}${relayIds.join(",")}`)).json();
+}
+
+async function populateRelayListHtml() {
+  const data = await fetchData();
+  const relayListElement = document.querySelector(".node-list");
+  relayListElement.innerHTML = '';
 
   data.relays
     .sort((a, b) => a.advertised_bandwidth > b.advertised_bandwidth ? -1 : 1)
-    .forEach(relay => {
+    .forEach((relay, index) => {
       const bandwidthHtml = relay.running ? `
             <div class="ip">
-                <span>contrib. ${Math.round(relay.advertised_bandwidth * 0.000001)} MiB/s</span>
+                <span>traffic: ${Math.round(relay.advertised_bandwidth * 0.000001)} MiB/s</span>
             </div>` : `
             <div class="ip">
                 <span class="offline">offline</span>
-            </div>`.trim();
+            </div>
+      `.trim();
 
-      document.querySelector(".node-list").innerHTML += `
+      const isMultiInstance = data.relays.filter(r => r.nickname === relay.nickname).length > 1;
+
+      relayListElement.innerHTML += `
             <li>
-              <a href="https://metrics.torproject.org/rs.html#search/${relay.fingerprint}" target="_blank">${relay.nickname}.null-f.org</a>
+              <div>
+                <a href="https://metrics.torproject.org/rs.html#search/${relay.fingerprint}" target="_blank">${relay.nickname}.null-f.org</a>
+                ${isMultiInstance ? "<cite>*</cite>" : ""}
+              </div>
               <div class="ips">
                 <div class="ip">
-                  <span>${relay.or_addresses[0]}</span>
+                  <span>${formatOrAddress(relay.or_addresses[0])}</span>
                 </div>
+
                 <div class="ip">
-                  <span>${relay.or_addresses[1] || "no IPv6 connectivity"}</span>
+                  <span>${formatOrAddress(relay.or_addresses[1]) || "no IPv6 connectivity"}</span>
                 </div>
+
                 ${bandwidthHtml}
+
                 <div class="ip">
                   <span>${relay.as_name}</span>
                   <img src="./assets/us-flag.svg" alt="USA Flag" draggable="false" />
@@ -39,5 +66,13 @@ document.addEventListener("DOMContentLoaded", async () => {
               </div>
           </li>
         `.trim();
+
+      if (index === data.relays.length - 1 && isMultiInstance) {
+        relayListElement.innerHTML += `<p class="multi-instance-message">* This server is running multiple relay instances.</p>`;
+      }
     });
+}
+
+document.addEventListener("DOMContentLoaded", async () => {
+  setTimeout(populateRelayListHtml, 500);
 });
