@@ -1,50 +1,43 @@
+// oh hai there :3
+// i wrote this in a rush
+// don't judge me
+
 document.addEventListener("DOMContentLoaded", async () => {
-    const rsaFingerprint = await fetch("/.well-known/tor-relay/rsa-fingerprint.txt").then((response) => response.text());
-    const relayIds = rsaFingerprint.split("\n").filter(line => line);
-    const relayData = [];
+  const rsaFingerprint = await fetch("/.well-known/tor-relay/rsa-fingerprint.txt").then((response) => response.text());
+  const relayIds = rsaFingerprint.split("\n").filter(line => line);
+  const response = await fetch("https://onionoo.torproject.org/details?lookup=" + relayIds.join(","));
+  const data = await response.json();
 
-    relayIds.forEach(async (relayId, index) => {
-        const response = await fetch("https://onionoo.torproject.org/details?lookup=" + relayId);
-        const data = await response.json();
-        relayData.push(data);
+  document.querySelector(".node-list").innerHTML = '';
 
-        if (relayData.length === relayIds.length) {
-            buildHtml()
-        }
-    });
-
-    function buildHtml() {
-        document.querySelector(".node-list").innerHTML = '';
-
-        relayData
-            .sort((a, b) => a.relays[0].nickname.localeCompare(b.relays[0].nickname))
-            .forEach(data => {
-                const bandwidthHtml = data.relays[0].running ? `
+  data.relays
+    .sort((a, b) => a.advertised_bandwidth > b.advertised_bandwidth ? -1 : 1)
+    .forEach(relay => {
+      const bandwidthHtml = relay.running ? `
             <div class="ip">
-                <span>contrib. ${Math.round(data.relays[0].advertised_bandwidth * 0.000001)} MiB/s</span>
+                <span>contrib. ${Math.round(relay.advertised_bandwidth * 0.000001)} MiB/s</span>
             </div>` : `
             <div class="ip">
                 <span class="offline">offline</span>
             </div>`.trim();
 
-                document.querySelector(".node-list").innerHTML += `
+      document.querySelector(".node-list").innerHTML += `
             <li>
-              <a href="https://metrics.torproject.org/rs.html#search/${data.relays[0].fingerprint}" target="_blank">${data.relays[0].nickname}.null-f.org</a>
+              <a href="https://metrics.torproject.org/rs.html#search/${relay.fingerprint}" target="_blank">${relay.nickname}.null-f.org</a>
               <div class="ips">
                 <div class="ip">
-                  <span>${data.relays[0].or_addresses[0]}</span>
+                  <span>${relay.or_addresses[0]}</span>
                 </div>
                 <div class="ip">
-                  <span>${data.relays[0].or_addresses[1] || "no IPv6 connectivity"}</span>
+                  <span>${relay.or_addresses[1] || "no IPv6 connectivity"}</span>
                 </div>
                 ${bandwidthHtml}
                 <div class="ip">
-                  <span>${data.relays[0].as_name}</span>
+                  <span>${relay.as_name}</span>
                   <img src="./assets/us-flag.svg" alt="USA Flag" draggable="false" />
                 </div>
               </div>
           </li>
         `.trim();
-            });
-    }
-})
+    });
+});
