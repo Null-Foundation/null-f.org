@@ -84,6 +84,10 @@ ul {
     color: var(--muted-color);
 }
 
+.node-list .ip .offline {
+    color: rgb(252, 82, 82);
+}
+
 .node-list img {
     height: 10px;
 }
@@ -121,9 +125,13 @@ ul {
     .node-list li {
         border-bottom: none;
         padding: 0;
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     .node-list .ips {
-        display: none;
+        margin-top: var(--spacing-sm);
+        justify-content: flex-start;
+        align-items: flex-start;
     }
 }
