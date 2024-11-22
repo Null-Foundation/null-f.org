@@ -2,6 +2,18 @@
     --spacing-base: 1.75rem;
     --spacing-lg: 2rem;
     --spacing-sm: 0.5rem;
+}
+
+body.light {
+    --primary-color: rgb(33, 35, 33);
+    --secondary-color: rgb(173, 52, 163);
+    --background-color: rgb(242, 242, 242);
+    --muted-color: rgb(0, 0, 0, 0.8);
+    --extra-muted-color: rgba(0, 0, 0, 0.4);
+    --warning-color: rgb(231, 0, 0);
+}
+
+body.dark {
     --primary-color: rgb(238, 252, 240);
     --secondary-color: rgb(124, 252, 151);
     --background-color: rgb(15, 15, 15);
@@ -20,6 +32,8 @@ body {
     line-height: var(--spacing-lg);
     max-width: 550px;
     text-wrap: pretty;
+    transition: all 0s ease-in-out;
+    transition-property: background, color;
 }
 
 a:link,

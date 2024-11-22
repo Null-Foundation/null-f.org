@@ -4,22 +4,17 @@ import Quote from "@/components/Quote.vue";
 import ParagraphBlock from "@/components/ParagraphBlock.vue";
 import Section from "@/components/Section.vue";
 import ServiceList from "./components/ServiceList.vue";
-import type { Service } from "./types/Service";
-import { getServiceMetrics } from "@/http/getServiceMetrics";
-import { onMounted, ref } from "vue";
+import { useServiceList } from "@/util/useServiceList";
+import { useAppearanceMode } from "@/util/useAppearanceMode";
 
-const loading = ref(true);
-const services = ref<Service[]>([]);
+const { toggleAppearanceMode, appearanceMode } = useAppearanceMode();
 
-onMounted(async () => {
-  services.value = await getServiceMetrics();
-  loading.value = false;
-});
+const { loading, services } = useServiceList();
 </script>
 
 <template>
   <Section>
-    <Heading />
+    <Heading :appearance-mode @toggle-appearance="toggleAppearanceMode" />
 
     <Quote>
       <template #quote>Censorship ends in logical completeness when nobody is allowed to read any books except the books
