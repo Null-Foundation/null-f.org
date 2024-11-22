@@ -33,7 +33,7 @@ export const getServiceMetrics = async (): Promise<Service[]> => {
             ipv6: formatOrAddress(relay.or_addresses[1]) || "no IPv6 connectivity",
             asName: relay.as_name,
             bandwidth: Math.round(relay.advertised_bandwidth * 0.000001),
-            offline: relay.is_offline,
+            offline: !relay.running,
             isMultiInstance: data.relays.filter((r: any) => r.nickname === relay.nickname).length > 1,
             countryCode: relay.country.toUpperCase(),
         }));

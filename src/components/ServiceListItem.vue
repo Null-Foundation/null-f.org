@@ -42,8 +42,7 @@ li {
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
-    border-bottom: 1px dotted var(--extra-muted-color);
-    padding: var(--spacing-lg) 0;
+    padding: var(--spacing-base) 0;
     align-items: center;
 }
 
@@ -77,7 +76,6 @@ cite {
 
 @media (max-width: 650px) {
     li {
-        border-bottom: none;
         padding: 0;
         flex-direction: column;
         align-items: flex-start;
