@@ -6,5 +6,6 @@ export type Service = {
     asName: string,
     bandwidth: number,
     offline: boolean,
-    isMultiInstance: boolean
+    isMultiInstance: boolean,
+    countryCode: string,
 }

@@ -1,8 +1,12 @@
 <template>
     <ul>
         <ServiceListLoader v-if="loading" />
-        <ServiceListItem v-else v-for="service in services" :key="service.hostname" :service="service" />
-        <ServiceListMultiRelayMessage v-if="services?.filter(service => service.isMultiInstance).length" />
+
+        <template v-else>
+            <ServiceListItem v-for="service in services" :key="service.hostname" :service="service" />
+            <ServiceListMultiRelayMessage v-if="services?.filter(service => service.isMultiInstance).length" />
+            <ServiceListTotalBandwidthMessage v-if="services?.length" :services="services" />
+        </template>
     </ul>
 </template>
 
@@ -11,6 +15,7 @@ import type { Service } from '@/types/Service';
 import ServiceListLoader from './ServiceListLoader.vue';
 import ServiceListItem from './ServiceListItem.vue';
 import ServiceListMultiRelayMessage from './ServiceListMultiRelayMessage.vue';
+import ServiceListTotalBandwidthMessage from './ServiceListTotalBandwidthMessage.vue';
 
 defineProps<{
     services: Service[];

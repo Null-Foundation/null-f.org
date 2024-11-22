@@ -15,13 +15,14 @@
             </div>
 
             <div class="row">
-                <span v-if="!service.offline">traffic: {{ service.bandwidth }}</span>
-
-                <span v-else class="offline">offline</span>
+                <span>{{ service.asName }}</span>
+                <img class="flag" :src="`https://flagsapi.com/${service.countryCode}/flat/64.png`" draggable="false" />
             </div>
 
             <div class="row">
-                <span>{{ service.asName }}</span>
+                <span v-if="!service.offline">traffic: {{ service.bandwidth }} MiB/s</span>
+
+                <span v-else class="offline">offline</span>
             </div>
         </div>
     </li>
