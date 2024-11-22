@@ -44,14 +44,15 @@ onMounted(async () => {
     </ParagraphBlock>
 
     <ServiceList :services="services" :loading="loading" />
-  </Section>
 
-  <Section>
     <ParagraphBlock>
-      <template #title>How can I get in touch?</template>
-      <template #body>For inquiries about our network or making a donation to the Null Foundation, please contact us
-        at <a href="mailto:info@null-f.org">info[at]null-f.org</a>. Our team will respond promptly during Pacific
-        Standard Time (PST) business hours.</template>
+      <template #title>How much does all this cost?</template>
+      <template #body>
+        Currently, we pay approximately $400 USD per year to our upstream service providers. If you'd like to donate to
+        the Null Foundation, please contact us at <a href="mailto:donate@null-f.org">donate[at]null-f.org</a> for more
+        information.
+        However, we recommend you donate directly to the Tor Project instead.
+      </template>
     </ParagraphBlock>
   </Section>
 
@@ -76,9 +77,9 @@ onMounted(async () => {
         </p>
 
         <p>
-          If you've understood the above and would still like to reach out regarding an abusive user on our network,
-          please
-          contact us at <a href="mailto:abuse@null-f.org">abuse[at]null-f.org</a> for immediate response.
+          For any other inquiries, please contact our abuse helpdesk at <a
+            href="mailto:abuse@null-f.org">abuse[at]null-f.org</a>. We will respond promptly during Pacific Standard
+          Time (PST) business hours.
         </p>
       </template>
     </ParagraphBlock>
