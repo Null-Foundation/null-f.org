@@ -22,7 +22,6 @@
 
             <div class="row">
                 <span>{{ service.asName }}</span>
-                <img class="flag" :src="usFlag" alt="USA Flag" draggable="false" />
             </div>
         </div>
     </li>
@@ -30,7 +29,6 @@
 
 <script setup lang="ts">
 import type { Service } from '@/types/Service';
-import usFlag from '@/assets/us-flag.svg';
 
 defineProps<{
     service: Service;
