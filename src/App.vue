@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Heading from "@/components/Heading.vue";
+import HeadingAppearanceToggle from "@/components/HeadingAppearanceToggle.vue";
 import Quote from "@/components/Quote.vue";
 import ParagraphBlock from "@/components/ParagraphBlock.vue";
 import Section from "@/components/Section.vue";
@@ -13,6 +14,8 @@ const { loading, services } = useServiceList();
 </script>
 
 <template>
+  <HeadingAppearanceToggle :appearance-mode @toggle-appearance="toggleAppearanceMode" />
+
   <Section>
     <Heading :appearance-mode @toggle-appearance="toggleAppearanceMode" />
 

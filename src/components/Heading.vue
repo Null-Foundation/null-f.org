@@ -4,20 +4,10 @@
         <pre>https://null-f.org</pre>
     </div>
 
-    <HeadingAppearanceToggle :appearance-mode @toggle-appearance="$emit('toggle-appearance')" />
 </template>
 
 <script setup lang="ts">
-import HeadingAppearanceToggle from "./HeadingAppearanceToggle.vue";
 import logo from '@/assets/logo.png';
-
-defineProps<{
-    appearanceMode: string;
-}>();
-
-defineEmits<{
-    (e: "toggle-appearance"): void;
-}>();
 </script>
 
 <style scoped>
