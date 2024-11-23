@@ -30,17 +30,19 @@ defineEmits<{
 .heading-appearance-toggle {
     width: 16px;
     height: 16px;
-    display: flex;
-    align-items: center;
     position: fixed;
     top: var(--spacing-base);
     right: var(--spacing-base);
+    border: 1px solid transparent;
+    padding: var(--spacing-sm);
+    display: flex;
+    border-radius: var(--spacing-sm);
+    transition: border 0.2s ease-in-out;
 }
 
 .heading-appearance-toggle:hover {
-    opacity: 0.75;
     cursor: pointer;
-    transition: opacity 0.2s ease-in-out;
+    border: 1px solid var(--extra-muted-color);
 }
 
 @media (max-width: 730px) {
