@@ -15,7 +15,7 @@ fi
 NICKNAME="$1"
 INSTANCE="$2"
 
-if [ -d $INSTANCE ]; then
+if [ -d "$INSTANCE" ]; then
   echo "Single-instance deployment detected."
   TORRC_LOCATION="/etc/tor/torrc"
   TORRC_TEMP_LOCATION="/etc/tor/torrc.tmp"
