@@ -41,6 +41,13 @@ touch -f $TORRC_TEMP_LOCATION
 
 curl -s $SOURCE_URL > $TORRC_TEMP_LOCATION
 
+if grep -R "<html" $TORRC_TEMP_LOCATION
+then
+  echo "Fatal: HTML found in $TORRC_TEMP_LOCATION, probably not a good response from the webserver."
+  rm $TORRC_TEMP_LOCATION
+  exit 0;
+fi
+
 if (git diff --no-index --quiet $TORRC_TEMP_LOCATION $TORRC_LOCATION) then 
    echo "$NICKNAME $INSTANCE: No changes detected, quitting fetch script..."
    rm $TORRC_TEMP_LOCATION
