@@ -4,7 +4,7 @@
     --spacing-sm: 0.5rem;
 }
 
-body.light {
+html {
     --primary-color: rgb(33, 35, 33);
     --secondary-color: rgb(173, 52, 163);
     --background-color: rgb(242, 242, 242);
@@ -13,7 +13,7 @@ body.light {
     --warning-color: rgb(231, 0, 0);
 }
 
-body.dark {
+html.dark {
     --primary-color: rgb(238, 252, 240);
     --secondary-color: rgb(124, 252, 151);
     --background-color: rgb(15, 15, 15);

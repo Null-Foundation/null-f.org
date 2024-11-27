@@ -14,10 +14,10 @@ export const useAppearanceMode = () => {
     watch(
         () => appearanceMode.value,
         () => {
-            document.body.className = appearanceMode.value;
+            document.querySelector('html')!.className = appearanceMode.value;
 
-            if (document.body.style.transition !== enabledTransitionStyle) {
-                document.body.style.transition = enabledTransitionStyle;
+            if (document.querySelector('html')!.style.transition !== enabledTransitionStyle) {
+                document.querySelector('html')!.style.transition = enabledTransitionStyle;
             }
         },
         {
