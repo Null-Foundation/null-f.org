@@ -20,10 +20,13 @@ import logo from '@/assets/logo.png';
     height: auto;
     gap: var(--spacing-base);
     margin-bottom: var(--spacing-base);
+    pointer-events: none;
+    user-select: none;
 }
 
 .heading img {
     height: 38px;
+    width: 38px;
     overflow: hidden;
     border-radius: var(--spacing-sm);
     border: 1px solid rgb(41, 39, 39);
