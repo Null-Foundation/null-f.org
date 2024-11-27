@@ -2,7 +2,7 @@
 
 # instructions:
 # set up a cron job to run this script every 10 minutes on relay host, one cron job per instance
-# curl https://null-f.org/.well-known/tor-relay/fetch-config.sh | bash -s -- granite 00
+# 0 * * * * curl https://null-f.org/.well-known/tor-relay/fetch-config.sh | bash -s -- granite 00
 
 set -e
 
@@ -10,6 +10,8 @@ if [ -z "$1" ]; then
     echo "Usage: $0 <nickname> <instance>"
     exit 1
 fi
+
+apt-get install git curl -y;
 
 # params
 NICKNAME="$1"
