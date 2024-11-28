@@ -1,13 +1,19 @@
 <template>
     <div class="service-list-total-bandwidth-message">
         <div class="labels legend">
-            <div class="label">Total traffic</div>
+            <div class="label">Total</div>
             <div class="label">Goal</div>
         </div>
 
-        <div class="labels" v-if="totalBandwidth < (goalMiBs - 100)">
-            <div class="value current">{{ totalBandwidth }} MiB/s</div>
-            <div class="value">{{ goalMiBs }} MiB/s</div>
+        <div class="labels">
+            <template v-if="!goalMet">
+                <div class="value current">{{ totalBandwidth }} MiB/s</div>
+                <div class="value">{{ goalMiBs }} MiB/s</div>
+            </template>
+
+            <template v-else>
+                <div class="value">We've met our goal!</div>
+            </template>
         </div>
 
         <div class="bar-outer">
@@ -58,6 +64,10 @@ const percentage = computed(() => {
 
     return `${Math.round((totalBandwidth.value / props.goalMiBs) * 100)}%`;
 });
+
+const goalMet = computed(() => {
+    return totalBandwidth.value > (props.goalMiBs - 200);
+});
 </script>
 
 <style scoped>
@@ -66,7 +76,7 @@ const percentage = computed(() => {
     flex-direction: column;
     position: relative;
     margin-bottom: var(--spacing-lg);
-    font-size: 0.77rem;
+    font-size: var(--font-size-small);
 }
 
 .labels {
@@ -102,6 +112,7 @@ const percentage = computed(() => {
     border-radius: var(--spacing-sm);
     transition: all 800ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
     transition-property: width;
+    transition-delay: 500ms;
     width: v-bind(percentage);
 }
 
@@ -110,6 +121,8 @@ const percentage = computed(() => {
     transform: translateX(-50%);
     transition: all 800ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
     transition-property: margin-left, opacity;
+    transition-delay: 500ms;
     opacity: v-bind(currentBandwidthOpacity);
+    color: var(--secondary-color);
 }
 </style>

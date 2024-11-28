@@ -5,12 +5,12 @@ import Quote from "@/components/Quote.vue";
 import ParagraphBlock from "@/components/ParagraphBlock.vue";
 import Section from "@/components/Section.vue";
 import ServiceList from "./components/ServiceList.vue";
+import Footer from "@/components/Footer.vue";
 import { useServiceList } from "@/util/useServiceList";
 import { useAppearanceMode } from "@/util/useAppearanceMode";
 
 const { toggleAppearanceMode, appearanceMode } = useAppearanceMode();
-
-const { loading, services, goalMiBs } = useServiceList();
+const { loading, services, goalMiBs, lastUpdated } = useServiceList();
 </script>
 
 <template>
@@ -38,7 +38,7 @@ const { loading, services, goalMiBs } = useServiceList();
     <ParagraphBlock>
       <template #title>What are your services?</template>
       <template #body>We fund and manage {{ services.length || 'a variety of' }} <a href="https://torproject.org"
-          target="_blank">Tor</a> network
+          target="_blank">Tor Project</a> network
         relays, listed below.</template>
     </ParagraphBlock>
   </Section>
@@ -52,7 +52,8 @@ const { loading, services, goalMiBs } = useServiceList();
         Currently, we pay approximately $425 USD per year to our upstream service providers. If you'd like to donate to
         the Null Foundation, please contact us at <a href="mailto:donate@null-f.org">donate[at]null-f.org</a> for more
         information.
-        However, we recommend you donate directly to the Tor Project instead.
+        However, we recommend you donate directly to the <a href="https://torproject.org" target="_blank">Tor
+          Project</a> instead if you haven't already.
       </template>
     </ParagraphBlock>
   </Section>
@@ -86,5 +87,9 @@ const { loading, services, goalMiBs } = useServiceList();
         </p>
       </template>
     </ParagraphBlock>
+  </Section>
+
+  <Section>
+    <Footer :last-updated />
   </Section>
 </template>

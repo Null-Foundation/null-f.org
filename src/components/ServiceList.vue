@@ -4,8 +4,8 @@
             <div v-for="title in [
                 'Hostname',
                 'AS Name',
-                'Bandwidth',
-                'IP',
+                'Traffic',
+                'IP:Port',
             ]" :key="title" class="cell" :data-title="title">
                 {{ title }}
             </div>
@@ -23,7 +23,7 @@
                     :src="`https://flagsapi.com/${service.countryCode}/flat/64.png`" draggable="false" />
             </div>
 
-            <div class="cell" data-title="Bandwidth">
+            <div class="cell" data-title="Traffic">
                 <template v-if="!service.offline">
                     {{ service.bandwidth }} MiB/s
                 </template>
@@ -33,7 +33,7 @@
                 </template>
             </div>
 
-            <div class="cell" data-title="IP">
+            <div class="cell" data-title="IP:Port">
                 <div class="ips monospace">
                     <span>{{ service.ipv4 }}</span>
                     <span> {{ service.ipv6 || "no IPv6 connectivity" }}</span>
@@ -67,7 +67,7 @@ defineProps<{
     max-width: 730px;
     display: table;
     margin: 0 auto;
-    font-size: 0.77rem;
+    font-size: var(--font-size-small);
     margin-top: 40px;
     margin-bottom: 40px;
     font-weight: 400;
@@ -130,6 +130,13 @@ a:visited {
     }
 }
 
+.header {
+    font-size: var(--font-size-extra-small);
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--muted-color);
+}
+
 .cell {
     padding: 6px 12px;
     display: table-cell;
@@ -144,7 +151,7 @@ a:visited {
 .flag {
     width: 10px;
     height: 10px;
-    margin-bottom: -2px;
+    margin-bottom: -1px;
     margin-left: 4px;
 }
 
@@ -157,13 +164,10 @@ a:visited {
     flex-direction: column;
     gap: 0rem;
     line-height: 1.7rem;
+    font-family: monospace;
 }
 
 .ips span {
     user-select: all;
-}
-
-.monospace {
-    font-family: monospace;
 }
 </style>

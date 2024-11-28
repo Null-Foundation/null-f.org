@@ -1,20 +1,20 @@
 <template>
-    <div class="heading">
-        <img class="logo" :src="logo" alt="Null Foundation Logo" draggable="false" />
-        <pre>https://null-f.org</pre>
+    <div class="footer">
+        <pre>last updated: {{ lastUpdated || 'unknown' }}</pre>
     </div>
-
 </template>
 
 <script setup lang="ts">
-import logo from '@/assets/logo.png';
+defineProps<{
+    lastUpdated: string;
+}>();
 </script>
 
 <style scoped>
-.heading {
+.footer {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-end;
     width: 100%;
     align-items: center;
     height: auto;
@@ -24,15 +24,7 @@ import logo from '@/assets/logo.png';
     user-select: none;
 }
 
-.heading img {
-    height: 38px;
-    width: 38px;
-    overflow: hidden;
-    border-radius: var(--spacing-sm);
-    border: 1px solid rgb(41, 39, 39);
-}
-
-.heading pre {
+.footer pre {
     font-size: var(--font-size-extra-small);
     font-weight: 600;
     color: var(--muted-color);

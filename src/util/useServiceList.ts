@@ -5,10 +5,14 @@ import { onMounted, ref, watch } from "vue";
 export const useServiceList = () => {
     const loading = ref(true);
     const services = ref<Service[]>([]);
+    const lastUpdated = ref<string>('');
     const goalMiBs = ref(700);
 
     onMounted(async () => {
-        services.value = await getServiceMetrics();
+        const serviceMetrics = await getServiceMetrics();
+
+        services.value = serviceMetrics.relays;
+        lastUpdated.value = serviceMetrics.lastUpdated;
         loading.value = false;
     });
 
@@ -16,5 +20,6 @@ export const useServiceList = () => {
         loading,
         services,
         goalMiBs,
+        lastUpdated,
     };
 }

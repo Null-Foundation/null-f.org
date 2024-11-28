@@ -4,6 +4,9 @@
     --spacing-base: 1.75rem;
     --spacing-lg: 2rem;
     --spacing-sm: 0.5rem;
+    --font-size-extra-small: 10px;
+    --font-size-small: 12px;
+    --font-size-base: 16px;
 }
 
 html {

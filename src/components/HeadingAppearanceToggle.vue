@@ -42,7 +42,7 @@ defineEmits<{
 
 .heading-appearance-toggle:hover {
     cursor: pointer;
-    border: 1px solid var(--extra-muted-color);
+    border: 1px solid var(--extra-extra-muted-color);
 }
 
 @media (max-width: 730px) {
