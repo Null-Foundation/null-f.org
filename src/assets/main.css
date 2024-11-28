@@ -12,6 +12,7 @@ html {
     --background-color: rgb(242, 242, 242);
     --muted-color: rgb(0, 0, 0, 0.8);
     --extra-muted-color: rgba(0, 0, 0, 0.4);
+    --extra-extra-muted-color: rgba(0, 0, 0, 0.05);
     --warning-color: rgb(231, 0, 0);
 }
 
@@ -21,6 +22,7 @@ html.dark {
     --background-color: rgb(15, 15, 15);
     --muted-color: rgba(255, 255, 255, 0.5);
     --extra-muted-color: rgba(255, 255, 255, 0.15);
+    --extra-extra-muted-color: rgba(255, 255, 255, 0.02);
     --warning-color: rgb(252, 82, 82);
 }
 

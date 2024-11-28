@@ -37,7 +37,8 @@ const { loading, services } = useServiceList();
   <Section>
     <ParagraphBlock>
       <template #title>What are your services?</template>
-      <template #body>We fund and manage a variety of <a href="https://torproject.org" target="_blank">Tor</a> network
+      <template #body>We fund and manage {{ services.length || 'a variety of' }} <a href="https://torproject.org"
+          target="_blank">Tor</a> network
         relays, listed below.</template>
     </ParagraphBlock>
   </Section>

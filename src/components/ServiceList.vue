@@ -1,5 +1,14 @@
 <template>
-    <div class="table">
+    <div v-if="!loading" class="table">
+        <div class="row header">
+            <div v-for="title in [
+                'Hostname',
+                'AS Name',
+                'Bandwidth',
+                'IP']" :key="title" class="cell" :data-title="title">
+                {{ title }}
+            </div>
+        </div>
         <div v-for="service in services" :key="service.hostname" class="row">
             <div class="cell" data-title="Hostname">
                 <a :href="service.metricsUrl" target="_blank">
@@ -9,7 +18,8 @@
 
             <div class="cell" data-title="AS Name">
                 {{ service.asName }}
-                <img class="flag" :src="`https://flagsapi.com/${service.countryCode}/flat/64.png`" draggable="false" />
+                <img class="flag" :title="service.countryCode"
+                    :src="`https://flagsapi.com/${service.countryCode}/flat/64.png`" draggable="false" />
             </div>
 
             <div class="cell" data-title="Bandwidth">
@@ -22,12 +32,11 @@
                 </template>
             </div>
 
-            <div class="cell monospace" data-title="IPv4">
-                {{ service.ipv4 }}
-            </div>
-
-            <div class="cell monospace" data-title="IPv6">
-                {{ service.ipv6 || "no IPv6 connectivity" }}
+            <div class="cell" data-title="IP">
+                <div class="ips monospace">
+                    <span>{{ service.ipv4 }}</span>
+                    <span> {{ service.ipv6 || "no IPv6 connectivity" }}</span>
+                </div>
             </div>
         </div>
     </div>
@@ -51,35 +60,28 @@ defineProps<{
 </script>
 
 <style scoped>
-.flag {
-    width: 10px;
-    height: 10px;
-    margin-bottom: -2px;
-    margin-left: 4px;
-}
-
-.offline {
-    color: var(--warning-color);
-}
-
 .table {
     width: 100%;
-    max-width: 800px;
+    max-width: 730px;
     display: table;
     margin: 0 auto;
-    font-size: 0.7rem;
+    font-size: 0.77rem;
     margin-top: 40px;
     margin-bottom: 40px;
     font-weight: 400;
 }
 
-.monospace {
-    font-family: monospace;
+a:link,
+a:visited {
+    text-decoration: none;
+    text-underline-offset: 0;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 730px) {
     .table {
         display: block;
+        max-width: 550px;
+        margin: 0 auto;
     }
 }
 
@@ -89,10 +91,10 @@ defineProps<{
 }
 
 .row:nth-of-type(odd) {
-    background: rgba(155, 155, 155, 0.1);
+    background: var(--extra-extra-muted-color);
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 730px) {
     .row {
         padding: 14px 0 7px;
         display: block;
@@ -129,9 +131,35 @@ defineProps<{
     display: table-cell;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 730px) {
     .cell {
         display: block;
     }
+}
+
+.flag {
+    width: 10px;
+    height: 10px;
+    margin-bottom: -2px;
+    margin-left: 4px;
+}
+
+.offline {
+    color: var(--warning-color);
+}
+
+.ips {
+    display: flex;
+    flex-direction: column;
+    gap: 0rem;
+    line-height: 1.7rem;
+}
+
+.ips span {
+    user-select: all;
+}
+
+.monospace {
+    font-family: monospace;
 }
 </style>
