@@ -49,7 +49,7 @@ const { loading, services, goalMiBs, lastUpdated } = useServiceList();
     <ParagraphBlock>
       <template #title>How much does all this cost?</template>
       <template #body>
-        Currently, we pay approximately $425 USD per year to our upstream service providers. If you'd like to donate to
+        Currently, we pay approximately $460 USD per year to our upstream service providers. If you'd like to donate to
         the Null Foundation, please contact us at <a href="mailto:donate@null-f.org">donate[at]null-f.org</a> for more
         information.
         However, we recommend you donate directly to the <a href="https://torproject.org" target="_blank">Tor
