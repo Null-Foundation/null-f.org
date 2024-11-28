@@ -5,7 +5,8 @@
                 'Hostname',
                 'AS Name',
                 'Bandwidth',
-                'IP']" :key="title" class="cell" :data-title="title">
+                'IP',
+            ]" :key="title" class="cell" :data-title="title">
                 {{ title }}
             </div>
         </div>
@@ -43,7 +44,7 @@
 
     <Section>
         <ServiceListLoader v-if="loading" />
-        <ServiceListTotalBandwidthMessage v-else-if="services?.length" :services="services" />
+        <ServiceListTotalBandwidthMessage v-else-if="services?.length" :services="services" :goal-mi-bs />
     </Section>
 </template>
 
@@ -55,7 +56,8 @@ import ServiceListTotalBandwidthMessage from '@/components/ServiceListTotalBandw
 
 defineProps<{
     services: Service[];
-    loading: boolean
+    loading: boolean;
+    goalMiBs: number;
 }>();
 </script>
 
@@ -69,6 +71,8 @@ defineProps<{
     margin-top: 40px;
     margin-bottom: 40px;
     font-weight: 400;
+    overflow: hidden;
+    border-radius: var(--spacing-sm);
 }
 
 a:link,

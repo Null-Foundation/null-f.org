@@ -10,7 +10,7 @@ import { useAppearanceMode } from "@/util/useAppearanceMode";
 
 const { toggleAppearanceMode, appearanceMode } = useAppearanceMode();
 
-const { loading, services } = useServiceList();
+const { loading, services, goalMiBs } = useServiceList();
 </script>
 
 <template>
@@ -43,7 +43,7 @@ const { loading, services } = useServiceList();
     </ParagraphBlock>
   </Section>
 
-  <ServiceList :services="services" :loading="loading" />
+  <ServiceList :services="services" :loading="loading" :goal-mi-bs />
 
   <Section>
     <ParagraphBlock>

@@ -5,6 +5,7 @@ import { onMounted, ref, watch } from "vue";
 export const useServiceList = () => {
     const loading = ref(true);
     const services = ref<Service[]>([]);
+    const goalMiBs = ref(700);
 
     onMounted(async () => {
         services.value = await getServiceMetrics();
@@ -14,5 +15,6 @@ export const useServiceList = () => {
     return {
         loading,
         services,
+        goalMiBs,
     };
 }
