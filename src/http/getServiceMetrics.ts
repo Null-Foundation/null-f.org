@@ -18,7 +18,7 @@ export const getServiceMetrics = async (): Promise<{ relays: Service[], lastUpda
 
     return {
         relays: data.relays
-            .sort((a: any, b: any) => a.advertised_bandwidth > b.advertised_bandwidth ? -1 : 1)
+            .sort((a: any, b: any) => a.nickname.localeCompare(b.nickname))
             .map((relay: any) => ({
                 metricsUrl: `https://metrics.torproject.org/rs.html#search/${relay.fingerprint}`,
                 hostname: `${relay.nickname}.null-f.org`,
