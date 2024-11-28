@@ -1,8 +1,7 @@
-Nickname granite
-NumCPUs 2
-IPv6Exit 1
+Nickname chlorine
 RunAsDaemon 1
 CookieAuthentication 1
+IPv6Exit 1
 ControlPort 9051
 ORPort 443
 ExitPolicy accept *:20-21     # FTP
