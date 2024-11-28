@@ -8,5 +8,7 @@
 .section {
     display: flex;
     flex-direction: column;
+    max-width: 550px;
+    margin: 0 auto;
 }
 </style>

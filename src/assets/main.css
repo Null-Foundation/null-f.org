@@ -34,10 +34,7 @@ body {
     padding: var(--spacing-base);
     margin: var(--spacing-base) auto;
     line-height: var(--spacing-lg);
-    max-width: 550px;
     text-wrap: pretty;
-    transition: all 0s ease-in-out;
-    transition-property: background, color;
 }
 
 a:link,

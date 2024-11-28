@@ -1,11 +1,11 @@
 <template>
-    <li class="service-list-loader">
+    <div class="service-list-loader">
         <svg width="24" height="24">
             <image :xlink:href="spinner" :src="spinner" width="24" height="24" />
         </svg>
 
         <p>Fetching relay statuses...</p>
-    </li>
+    </div>
 </template>
 
 <script setup lang="ts">
@@ -20,6 +20,7 @@ import spinner from '@/assets/spinner.svg';
     gap: var(--spacing-base);
     align-items: center;
     color: var(--muted-color);
+    width: 100%;
 }
 
 svg {

@@ -40,9 +40,11 @@ const { loading, services } = useServiceList();
       <template #body>We fund and manage a variety of <a href="https://torproject.org" target="_blank">Tor</a> network
         relays, listed below.</template>
     </ParagraphBlock>
+  </Section>
 
-    <ServiceList :services="services" :loading="loading" />
+  <ServiceList :services="services" :loading="loading" />
 
+  <Section>
     <ParagraphBlock>
       <template #title>How much does all this cost?</template>
       <template #body>
@@ -64,14 +66,16 @@ const { loading, services } = useServiceList();
         </p>
 
         <p>
-          We do not provide email hosting services. If you have a complaint about spam, please contact the email server
+          We do not provide email hosting services. If you have a complaint about spam, please contact the email
+          server
           operator listed in the message header. They can address the issue in accordance with their own rules and
           applicable laws.
         </p>
 
         <p>
           Under the Digital Millennium Copyright Act (DMCA),
-          ISPs are protected from liability for user activities through four safe harbors, as outlined in 17 U.S.C. 512.
+          ISPs are protected from liability for user activities through four safe harbors, as outlined in 17 U.S.C.
+          512.
         </p>
 
         <p>
