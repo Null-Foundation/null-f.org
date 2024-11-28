@@ -1,10 +1,8 @@
-ControlPort 9052
-ORPort 8081
-Nickname carbon
+Nickname ozone
 RunAsDaemon 1
 CookieAuthentication 1
-ExitRelay 1
-IPv6Exit 1
+ControlPort 9052
+ORPort 143
 ExitPolicy accept *:20-21     # FTP
 ExitPolicy accept *:43        # WHOIS
 ExitPolicy accept *:53        # DNS
