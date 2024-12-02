@@ -10,7 +10,7 @@ import { useServiceList } from "@/util/useServiceList";
 import { useAppearanceMode } from "@/util/useAppearanceMode";
 
 const { toggleAppearanceMode, appearanceMode } = useAppearanceMode();
-const { loading, services, goalMiBs, lastUpdated } = useServiceList();
+const { loading, services, goal, lastUpdated } = useServiceList();
 </script>
 
 <template>
@@ -39,11 +39,13 @@ const { loading, services, goalMiBs, lastUpdated } = useServiceList();
       <template #title>What are your services?</template>
       <template #body>We fund and manage {{ services.length || 'a variety of' }} <a href="https://torproject.org"
           target="_blank">Tor Project</a> network
-        relays, listed below.</template>
+        relays, listed below. Not listed below is our network of bridges, which are <a
+          href="https://tb-manual.torproject.org/bridges/">kept secret and distributed</a> by the Tor
+        Project.</template>
     </ParagraphBlock>
   </Section>
 
-  <ServiceList :services="services" :loading="loading" :goal-mi-bs />
+  <ServiceList :services="services" :loading="loading" :goal />
 
   <Section>
     <ParagraphBlock>

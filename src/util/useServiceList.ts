@@ -6,7 +6,7 @@ export const useServiceList = () => {
     const loading = ref(true);
     const services = ref<Service[]>([]);
     const lastUpdated = ref<string>('');
-    const goalMiBs = ref(700);
+    const goal = ref(5600);
 
     onMounted(async () => {
         const serviceMetrics = await getServiceMetrics();
@@ -19,7 +19,7 @@ export const useServiceList = () => {
     return {
         loading,
         services,
-        goalMiBs,
+        goal,
         lastUpdated,
     };
 }

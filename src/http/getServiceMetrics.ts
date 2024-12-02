@@ -25,7 +25,7 @@ export const getServiceMetrics = async (): Promise<{ relays: Service[], lastUpda
                 ipv4: formatOrAddress(relay.or_addresses[0]),
                 ipv6: formatOrAddress(relay.or_addresses[1]) || "no IPv6 connectivity",
                 asName: relay.as_name,
-                bandwidth: Math.round(relay.advertised_bandwidth * 0.000001),
+                bandwidth: Math.round((relay.advertised_bandwidth * 0.000001) * 8.38861),
                 offline: !relay.running,
                 isMultiInstance: data.relays.filter((r: any) => r.nickname === relay.nickname).length > 1,
                 countryCode: relay.country.toUpperCase(),

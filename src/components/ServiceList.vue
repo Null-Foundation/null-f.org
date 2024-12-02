@@ -25,7 +25,7 @@
 
             <div class="cell" data-title="Traffic">
                 <template v-if="!service.offline">
-                    {{ service.bandwidth }} MiB/s
+                    {{ service.bandwidth }} Mbps
                 </template>
 
                 <template v-else>
@@ -44,7 +44,7 @@
 
     <Section>
         <ServiceListLoader v-if="loading" />
-        <ServiceListTotalBandwidthMessage v-else-if="services?.length" :services="services" :goal-mi-bs />
+        <ServiceListTotalBandwidthMessage v-else-if="services?.length" :services="services" :goal />
     </Section>
 </template>
 
@@ -57,7 +57,7 @@ import ServiceListTotalBandwidthMessage from '@/components/ServiceListTotalBandw
 defineProps<{
     services: Service[];
     loading: boolean;
-    goalMiBs: number;
+    goal: number;
 }>();
 </script>
 

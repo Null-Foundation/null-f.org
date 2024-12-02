@@ -7,8 +7,8 @@
 
         <div class="labels">
             <template v-if="!goalMet">
-                <div class="value current">{{ totalBandwidth }} MiB/s</div>
-                <div class="value">{{ goalMiBs }} MiB/s</div>
+                <div class="value current">{{ totalBandwidth }} Mbps</div>
+                <div class="value">{{ goal }} Mbps</div>
             </template>
 
             <template v-else>
@@ -28,7 +28,7 @@ import type { Service } from '@/types/Service';
 
 const props = defineProps<{
     services: Service[];
-    goalMiBs: number;
+    goal: number;
 }>();
 
 const innerBarRef = ref<Element>();
@@ -46,7 +46,7 @@ onMounted(() => {
 });
 
 const totalBandwidth = computed(() => {
-    return Math.min(props.services.reduce((total, service) => total + service.bandwidth, 0), props.goalMiBs);
+    return Math.min(props.services.reduce((total, service) => total + service.bandwidth, 0), props.goal);
 });
 
 const currentBandwidthOpacity = computed(() => {
@@ -62,11 +62,11 @@ const percentage = computed(() => {
         return '0%';
     }
 
-    return `${Math.round((totalBandwidth.value / props.goalMiBs) * 100)}%`;
+    return `${Math.round((totalBandwidth.value / props.goal) * 100)}%`;
 });
 
 const goalMet = computed(() => {
-    return totalBandwidth.value > (props.goalMiBs - 200);
+    return totalBandwidth.value > (props.goal - 200);
 });
 </script>
 
@@ -112,7 +112,7 @@ const goalMet = computed(() => {
     border-radius: var(--spacing-sm);
     transition: all 800ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
     transition-property: width;
-    transition-delay: 500ms;
+    transition-delay: 300ms;
     width: v-bind(percentage);
 }
 
@@ -121,7 +121,7 @@ const goalMet = computed(() => {
     transform: translateX(-50%);
     transition: all 800ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
     transition-property: margin-left, opacity;
-    transition-delay: 500ms;
+    transition-delay: 300ms;
     opacity: v-bind(currentBandwidthOpacity);
     color: var(--secondary-color);
 }
