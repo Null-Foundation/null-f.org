@@ -1,5 +1,5 @@
-ControlPort 9052
-ORPort 8081
+ControlPort 9054
+ORPort 8083
 Nickname carbon
 RunAsDaemon 1
 CookieAuthentication 1
