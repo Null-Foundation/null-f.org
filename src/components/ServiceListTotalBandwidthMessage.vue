@@ -110,18 +110,16 @@ const goalMet = computed(() => {
     height: 100%;
     background: var(--secondary-color);
     border-radius: var(--spacing-sm);
-    transition: all 800ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 2s ease-in-out;
     transition-property: width;
-    transition-delay: 300ms;
     width: v-bind(percentage);
 }
 
 .current {
     margin-left: v-bind(percentage);
     transform: translateX(-50%);
-    transition: all 800ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 2s ease-in-out;
     transition-property: margin-left, opacity;
-    transition-delay: 300ms;
     opacity: v-bind(currentBandwidthOpacity);
     color: var(--secondary-color);
 }
