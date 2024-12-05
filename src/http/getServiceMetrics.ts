@@ -1,4 +1,5 @@
 import type { Service } from '@/types/Service';
+import { sleep } from "@/util/sleep";
 
 const rsaFingerprintUrl = "/.well-known/tor-relay/rsa-fingerprint.txt";
 const onionooLookupUrlPrefix = "https://onionoo.torproject.org/details?lookup=";
@@ -15,6 +16,8 @@ export const getServiceMetrics = async (): Promise<{ relays: Service[], lastUpda
     }
 
     const data = await fetchData();
+
+    await sleep(1000);
 
     return {
         relays: data.relays
