@@ -9,4 +9,5 @@ ExitPolicy accept *:53
 ExitPolicy accept *:80
 ExitPolicy accept *:443
 ExitPolicy reject *:*
+ExitRelay 1
 IPv6Exit 1
