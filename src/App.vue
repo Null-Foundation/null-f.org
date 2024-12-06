@@ -20,9 +20,9 @@ const { loading, services, goal, lastUpdated } = useServiceList();
     <Heading :appearance-mode @toggle-appearance="toggleAppearanceMode" />
 
     <Quote>
-      <template #quote>Censorship ends in logical completeness when nobody is allowed to read any books except the books
-        that nobody reads.</template>
-      <template #author>George Bernard Shaw</template>
+      <template #quote>Information is power. But like all power, there are those who want to keep it for
+        themselves.</template>
+      <template #author>Aaron Swartz</template>
     </Quote>
 
     <ParagraphBlock>
@@ -61,6 +61,14 @@ const { loading, services, goal, lastUpdated } = useServiceList();
   </Section>
 
   <Section>
+    <ParagraphBlock featured>
+      <template #title>💸 We're seeking server sponsors!</template>
+      <template #body>Do you have a dedicated server collecting dust? Let us host a relay on it! We'll manage
+        everything—abuse reports, maintenence and tuning. We'll also promote
+        your brand throughout the larger cybersec community. Email us at <a
+          href="mailto:info@null-f.org">info[at]null-f.org</a> to learn more.</template>
+    </ParagraphBlock>
+
     <ParagraphBlock>
       <template #title>How can I report abuse?</template>
       <template #default>

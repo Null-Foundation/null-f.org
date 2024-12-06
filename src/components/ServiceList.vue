@@ -68,7 +68,7 @@ defineProps<{
     display: table;
     margin: 0 auto;
     font-size: var(--font-size-small);
-    margin-top: 40px;
+    margin-top: calc(2 * var(--spacing-base));
     margin-bottom: 40px;
     font-weight: 400;
     overflow: hidden;
@@ -85,7 +85,7 @@ a:visited {
     .table {
         display: block;
         max-width: 550px;
-        margin: 0 auto;
+        margin: calc(2 * var(--spacing-base)) 0;
     }
 }
 

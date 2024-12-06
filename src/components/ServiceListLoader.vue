@@ -21,6 +21,7 @@ import spinner from '@/assets/spinner.svg';
     align-items: center;
     color: var(--muted-color);
     width: 100%;
+    margin: calc(2 * var(--spacing-base)) 0;
 }
 
 svg {

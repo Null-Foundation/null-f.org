@@ -1,9 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Frank+Ruhl+Libre:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap');
 
 * {
     --spacing-base: 1.75rem;
-    --spacing-lg: 2rem;
     --spacing-sm: 0.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
     --font-size-extra-small: 10px;
     --font-size-small: 12px;
     --font-size-base: 16px;
@@ -22,7 +23,7 @@ html {
 html.dark {
     --primary-color: rgb(238, 252, 240);
     --secondary-color: rgb(124, 252, 151);
-    --background-color: rgb(15, 15, 15);
+    --background-color: rgb(24, 23, 25);
     --muted-color: rgba(255, 255, 255, 0.5);
     --extra-muted-color: rgba(255, 255, 255, 0.15);
     --extra-extra-muted-color: rgba(255, 255, 255, 0.02);
