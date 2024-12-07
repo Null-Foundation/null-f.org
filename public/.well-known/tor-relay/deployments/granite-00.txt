@@ -1,5 +1,4 @@
 Nickname granite
-NumCPUs 2
 RunAsDaemon 1
 CookieAuthentication 1
 ControlPort 9051

@@ -1,4 +1,3 @@
-NumCPUs 2
 Nickname titanium      
 RunAsDaemon 1
 CookieAuthentication 1

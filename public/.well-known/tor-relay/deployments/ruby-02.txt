@@ -1,4 +1,3 @@
-NumCPUs 2
 Nickname ruby      
 RunAsDaemon 1
 CookieAuthentication 1
